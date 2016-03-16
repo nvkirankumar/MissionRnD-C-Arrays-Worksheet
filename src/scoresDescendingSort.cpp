@@ -12,7 +12,7 @@ ERROR CASES: Return NULL for invalid Inputs.
 
 NOTES:
 */
-
+  
 #include <stdio.h>
 
 struct student {
@@ -21,5 +21,22 @@ struct student {
 };
 
 void * scoresDescendingSort(struct student *students, int len) {
-	return NULL;
+	if (len <= 0 || students == NULL)
+		return NULL;
+	struct student s;
+	int i = 0;
+	len--;
+
+
+	
+	for (i = 0; i<len; i++)
+	{
+		if (students[i].score < students[len].score)
+		{
+			s = students[i];
+			students[i] = students[len];
+			students[len] = s;
+			len--;
+		}
+	}
 }
